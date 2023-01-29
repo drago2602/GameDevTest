@@ -6,43 +6,56 @@ using DG.Tweening;
 using System.Linq;
 using TMPro;
 
-public class BoardDrop : MonoBehaviour
+public class TurnSequence : MonoBehaviour
 {
+    //gameManager kept under corecomponents in hierarchy
+    public GameObject gameManager;
+
     public GameObject[] BoardSymbols;
     public Transform[] BoardLocations;
     public Transform[] SpawnLocations;
     public Transform[] DestroyLocations;
     public Button[] Buttons;
     public Image[] Winlines;
-    public Paytable symbolFactory;
-    public PlayButton playButton;
-
-    public decimal wintotal;
-
+    public decimal WinTotal;
     public Image WinTallyBox;
 
-    public Transform inpos;
-    public Transform outpos;
-    public TextMeshProUGUI tallyText;
+    //In and out locations for the tally
+    public Transform InPos;
+    public Transform OutPos;
 
+    public TextMeshProUGUI TallyText;
     public float TallySpeed;
-    public DenomButton denomref;
-
     public Animator GoblinAnim;
 
+    private Paytable _symbolfactory;
+    private DenomButton _denomref;
+    private PlayButton _playbutton;
 
+
+    private void Start()
+    {
+        _symbolfactory = gameManager.GetComponent<Paytable>();
+        _denomref = gameManager.GetComponent<DenomButton>();
+        _playbutton = gameManager.GetComponent<PlayButton>();
+    }
+    //Win Sequence Controller
     public IEnumerator BoardFill(int[] symbolArray)
     {
-        wintotal = 0;
+        //clears last win and disables buttons for the turn
+        WinTotal = 0;
         DisableButtons();
 
+        //A counter used for the icon drop in
         var PosCounter = 0;
         foreach (Transform t in BoardLocations)
         {
             foreach (Transform j in t)
             {
-                //Random generator creating a slightly variable delay in drop
+                //Random generator creating a slightly variable delay in drop out
                 var varTime = Random.Range(0.1f, 0.5f);
+
+                //Move objects off the board and fade the image as it goes.
                 j.DOMoveY(DestroyLocations[PosCounter].position.y, varTime);
                 j.gameObject.GetComponent<Image>().DOFade(0, varTime);
                 PosCounter++;
@@ -50,10 +63,12 @@ public class BoardDrop : MonoBehaviour
                 {
                     PosCounter = 0;
                 }
+                //Destroy icon
                 GameObject.Destroy(j.gameObject, varTime);
             }
         }
 
+        //a delay to give time between symbols dropping out and dropping in
         yield return new WaitForSeconds(0.05f);
 
         var count = 0;
@@ -63,7 +78,7 @@ public class BoardDrop : MonoBehaviour
             //Instantiates the symbols with boardLocation markers as parents
             var currSymbol = Instantiate(BoardSymbols[i], SpawnLocations[loopCount].position, this.transform.rotation, BoardLocations[count]);
 
-            //Random generator creating a slightly variable delay in drop
+            //Random generator creating a slightly variable delay in drop in speed
             var varTime = Random.Range(0.2f, 0.5f);
 
             //Dotween moving the symbol from the spawn location down to the Board Location
@@ -75,70 +90,59 @@ public class BoardDrop : MonoBehaviour
                 loopCount = 0;
             }
 
-
-            //Delays each symbol drop by 0.2 second to create a stagger effect
+            //Makes new symbol wait 0.2 seconds before appearing to prevent them all falling simultaneously
             yield return new WaitForSeconds(0.2f);
         }
 
-        //move to solver if possible
+        //Checks each winline for wins and displays win info to player if present
         if (symbolArray[0].Equals(symbolArray[1]) && symbolArray[0].Equals(symbolArray[2]))
         {
-            wintotal = wintotal + symbolFactory.paytableSymbols[symbolArray[0]].PayValue;
-            Winlines[0].DOFade(1, 1);
-            yield return new WaitForSeconds(0.1f);
-            GoblinAnim.Play("Attack01");
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine(WinTally());
+            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[0]].PayValue;
+            StartCoroutine(WinHighlight(0));
         }
         if (symbolArray[3].Equals(symbolArray[4]) && symbolArray[3].Equals(symbolArray[5]))
         {
-            wintotal = wintotal + symbolFactory.paytableSymbols[symbolArray[3]].PayValue;
-            Winlines[1].DOFade(1, 1);
-            yield return new WaitForSeconds(0.1f);
-            GoblinAnim.Play("Attack01");
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine(WinTally());
+            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[3]].PayValue;
+            StartCoroutine(WinHighlight(1));
         }
         if (symbolArray[6].Equals(symbolArray[7]) && symbolArray[6].Equals(symbolArray[8]))
         {
-            wintotal = wintotal + symbolFactory.paytableSymbols[symbolArray[6]].PayValue;
-            Winlines[2].DOFade(1, 1);
-            yield return new WaitForSeconds(0.1f);
-            GoblinAnim.Play("Attack01");
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine(WinTally());
+            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[6]].PayValue;
+            StartCoroutine(WinHighlight(2));
         }
         if (symbolArray[0].Equals(symbolArray[4]) && symbolArray[0].Equals(symbolArray[8]))
         {
-            wintotal = wintotal + symbolFactory.paytableSymbols[symbolArray[0]].PayValue;
-            Winlines[3].DOFade(1, 1);
-            yield return new WaitForSeconds(0.1f);
-            GoblinAnim.Play("Attack01");
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine(WinTally());
+            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[0]].PayValue;
+            StartCoroutine(WinHighlight(3));
         }
         if (symbolArray[2].Equals(symbolArray[4]) && symbolArray[2].Equals(symbolArray[6]))
         {
-            wintotal = wintotal + symbolFactory.paytableSymbols[symbolArray[2]].PayValue;
-            Winlines[4].DOFade(1, 1);
-            yield return new WaitForSeconds(0.1f);
-            GoblinAnim.Play("Attack01");
-            yield return new WaitForSeconds(0.1f);
-            StartCoroutine(WinTally());
+            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[2]].PayValue;
+            StartCoroutine(WinHighlight(4));
         }
-        if (wintotal == 0)
+        if (WinTotal == 0)
         {
             yield return new WaitForSeconds(0.5f);
             EnableButtons();
         }
-
-
-        //If wins present then calculate total winnings
-        // Begin Tally and UI
-        playButton.PostPlay();
+       
+        // Begin UI update through postplay
+        _playbutton.PostPlay();
 
     }
 
+    //WinEffects begin here with some delay between each to avoid overwhelming player
+    private IEnumerator WinHighlight(int winlineIndex)
+    {
+        Winlines[winlineIndex].DOFade(1, 1);
+        yield return new WaitForSeconds(0.1f);
+        GoblinAnim.Play("Attack01");
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(WinTally());
+        Debug.Log("finishing");
+    }
+
+    //Disables UI buttons
     private void DisableButtons()
     {
         foreach(Button b in Buttons)
@@ -148,6 +152,7 @@ public class BoardDrop : MonoBehaviour
 
     }
 
+    //Enables UI buttons
     private void EnableButtons()
     {
         foreach (Button b in Buttons)
@@ -156,6 +161,7 @@ public class BoardDrop : MonoBehaviour
         }
     }
 
+    //Fades out all active winlines
     public void DimAllWinlines()
     {
         foreach(Image i in Winlines)
@@ -164,18 +170,24 @@ public class BoardDrop : MonoBehaviour
         }
     }
 
+    //Controls win tally
     public IEnumerator WinTally()
     {
-        WinTallyBox.transform.DOMoveY(inpos.position.y, 1);
+        //Tweens the box where the value tallys onto the screen
+        WinTallyBox.transform.DOMoveY(InPos.position.y, 1);
+        //Begins count again
         var currTallyVal = 0.00m;
         yield return new WaitForSeconds(0.2f);
-        while (currTallyVal < (wintotal*denomref.GetCurrentDenom()))
+
+        //Continuously ticks up the value in the winbox until it meets the required value
+        //Speeds up the tally at certain intervals to keep it from taking forever on big wins.
+        while (currTallyVal < (WinTotal*_denomref.GetCurrentDenom()))
         {
             currTallyVal += 0.01m;
-            tallyText.text = currTallyVal + "";
+            TallyText.text = currTallyVal + "";
             if (currTallyVal < 1)
             {
-                yield return new WaitForSeconds(TallySpeed*(float)denomref.GetCurrentDenom());
+                yield return new WaitForSeconds(TallySpeed*(float)_denomref.GetCurrentDenom());
             }
             else if (currTallyVal < 5)
             {
@@ -186,17 +198,19 @@ public class BoardDrop : MonoBehaviour
                 yield return new WaitForSeconds(TallySpeed/5);
             }
         }
-        if (currTallyVal == (wintotal * denomref.GetCurrentDenom())){
+
+        //Enable buttons once value is reached
+        if (currTallyVal == (WinTotal * _denomref.GetCurrentDenom())){
             yield return new WaitForSeconds(0.5f);
             EnableButtons();
         }
     }
 
+    //Dismisses tally box and resets tally value.
     public void DismissTally()
     {
-        //StopCoroutine(WinTally());
         var currTallyVal = 0;
-        tallyText.text = currTallyVal + "";
-        WinTallyBox.transform.DOMoveY(outpos.position.y, 0.2f);
+        TallyText.text = currTallyVal.ToString();
+        WinTallyBox.transform.DOMoveY(OutPos.position.y, 0.2f);
     }
 }

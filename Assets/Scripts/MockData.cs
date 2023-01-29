@@ -5,46 +5,51 @@ using TMPro;
 
 public class MockData : MonoBehaviour
 {
-    private decimal balance;
-    public TextMeshProUGUI balanceText;
+    private decimal _balance;
+    public TextMeshProUGUI BalanceText;
 
-    public decimal lastWin;
-    public TextMeshProUGUI winBox;
+    public decimal LastWin;
+    public TextMeshProUGUI WinBox;
 
+    //Sets balance to 10 and updates UI to reflect that as per instructions.
     private void Start()
     {
-        balance = 10.00M;
+        _balance = 10.00M;
         UpdateBalance();
     }
 
+    //Updates the current balance UI.
     public void UpdateBalance()
     {
-        balanceText.text = "Balance: $" + balance.ToString();
+        BalanceText.text = "Balance: $" + _balance.ToString();
     }
 
+    //Updates the Last Win text to reflect the last win.
     private void UpdateLastWin()
     {
-        winBox.text = "Last Win: $" + lastWin.ToString();
+        WinBox.text = "Last Win: $" + LastWin.ToString();
     }
-
+    
+    //Increase balance by value and update UI
     public void increaseBalance(decimal value)
     {
-        balance += value;
+        _balance += value;
         UpdateBalance();
     }
-
+    
+    //Decrease balance by value and update UI
     public void decreaseBalance(decimal value)
     {
-        balance -= value;
+        _balance -= value;
         UpdateBalance();
     }
 
+    //Updates balance and last win in a single function to save repeat function calls
     public void WinUpdateUI(decimal win)
     {
-        balance = balance + win;
+        _balance = _balance + win;
         UpdateBalance();
-        lastWin = win;
+        LastWin = win;
         UpdateLastWin();
-        //Debug.Log("check" + win.ToString());
     }
 }

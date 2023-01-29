@@ -360,15 +360,15 @@ RectTransform:
   m_GameObject: {fileID: 93650700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11176497, y: 1, z: 1}
+  m_LocalScale: {x: 0.21827772, y: 1.3703836, z: 1.407268}
   m_Children:
   - {fileID: 350094054}
-  m_Father: {fileID: 642106961}
+  m_Father: {fileID: 886703408}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.70001, y: 5.199997}
+  m_AnchoredPosition: {x: 78.294, y: -179.67403}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93650702
@@ -829,7 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137245030}
   m_Layer: 5
-  m_Name: OutScreenPos
+  m_Name: TallyOutScreenPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -847,7 +847,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 907818300}
-  m_RootOrder: 18
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -943,11 +943,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Dagger
-  symbolIndex: 1
+  SymbolName: Dagger
+  SymbolIndex: 1
   PayValue: 2
-  paytableText: {fileID: 880448656}
-  symbolWeight: 20
+  PaytableText: {fileID: 880448656}
+  SymbolWeight: 20
 --- !u!1 &211073251
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,8 +975,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5413825, y: 0.5413825, z: 0.5413825}
   m_Children: []
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 11
+  m_Father: {fileID: 1605306869}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1072,11 +1072,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Mutton
-  symbolIndex: 0
+  SymbolName: Mutton
+  SymbolIndex: 0
   PayValue: 1
-  paytableText: {fileID: 135100711}
-  symbolWeight: 25
+  PaytableText: {fileID: 135100711}
+  SymbolWeight: 25
 --- !u!1 &239303642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,8 +1238,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5413825, y: 0.5413825, z: 0.5413825}
   m_Children: []
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 9
+  m_Father: {fileID: 1605306869}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1535,11 +1535,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Chest
-  symbolIndex: 5
+  SymbolName: Chest
+  SymbolIndex: 5
   PayValue: 25
-  paytableText: {fileID: 671194557}
-  symbolWeight: 5
+  PaytableText: {fileID: 671194557}
+  SymbolWeight: 5
 --- !u!1 &452052820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,8 +1567,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5413825, y: 0.5413825, z: 0.5413825}
   m_Children: []
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 13
+  m_Father: {fileID: 1605306869}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1737,15 +1737,15 @@ RectTransform:
   m_GameObject: {fileID: 454620834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11176497, y: 1, z: 1}
+  m_LocalScale: {x: 0.21827772, y: 1.3703836, z: 1.407268}
   m_Children:
   - {fileID: 1105092237}
-  m_Father: {fileID: 642106961}
+  m_Father: {fileID: 886703408}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40.8, y: 5.199997}
+  m_AnchoredPosition: {x: -73.064026, y: -179.67403}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &454620836
@@ -1881,8 +1881,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5413825, y: 0.5413825, z: 0.5413825}
   m_Children: []
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 12
+  m_Father: {fileID: 1605306869}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1978,11 +1978,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Cart
-  symbolIndex: 6
+  SymbolName: Cart
+  SymbolIndex: 6
   PayValue: 50
-  paytableText: {fileID: 2123068973}
-  symbolWeight: 3
+  PaytableText: {fileID: 2123068973}
+  SymbolWeight: 3
 --- !u!1 &602640088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,7 +2016,7 @@ RectTransform:
   - {fileID: 1827401172}
   - {fileID: 1410310868}
   m_Father: {fileID: 907818300}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2048,13 +2048,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603511456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.9530065, y: 1.3703835, z: 1.4072679}
   m_Children:
   - {fileID: 41709561}
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 4
+  m_Father: {fileID: 1995790439}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2129,10 +2129,8 @@ RectTransform:
   m_LocalScale: {x: 1.9530066, y: 1.3703836, z: 1.407268}
   m_Children:
   - {fileID: 1827787330}
-  - {fileID: 454620835}
-  - {fileID: 93650701}
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 15
+  m_Father: {fileID: 1995790439}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2893,8 +2891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e5c65283aa19848ba4c8188b35d311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  denomIndex: 0
-  denomText: {fileID: 1827787331}
+  DenomIndex: 0
+  DenomText: {fileID: 1827787331}
 --- !u!114 &675800969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2907,8 +2905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5986d99daa9fb4fb6473fc6b7dd9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balanceText: {fileID: 41709562}
-  winBox: {fileID: 1674110511}
+  BalanceText: {fileID: 41709562}
+  WinBox: {fileID: 1674110511}
 --- !u!114 &675800970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2921,9 +2919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92df10a83aa364d43b7d01c3806e1855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mockdata: {fileID: 675800969}
-  denom: {fileID: 675800968}
-  solver: {fileID: 675800972}
+  gameManager: {fileID: 675800966}
   BoardController: {fileID: 675800973}
 --- !u!114 &675800971
 MonoBehaviour:
@@ -2937,7 +2933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6720278b4dea7e459e48f4b40583f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paytableSymbols:
+  PaytableSymbols:
   - {fileID: 234903158}
   - {fileID: 186205367}
   - {fileID: 800144070}
@@ -2947,7 +2943,7 @@ MonoBehaviour:
   - {fileID: 472370380}
   - {fileID: 2010288523}
   - {fileID: 1331068509}
-  denom: {fileID: 675800968}
+  Denom: {fileID: 675800968}
 --- !u!114 &675800972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2960,7 +2956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe7bccd9b7d5ff4a990a0c7366b2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconInfo: {fileID: 675800971}
+  IconInfo: {fileID: 675800971}
   BoardArray: 000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!114 &675800973
 MonoBehaviour:
@@ -2974,6 +2970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a5f309ce369fb4e88b5540e35afea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 675800966}
   BoardSymbols:
   - {fileID: 7304308683990234709, guid: 91f375690c7cb7e4c90eebb670545315, type: 3}
   - {fileID: 4356204704695322393, guid: f0c13e6c6a5574442966a3457a50b6af, type: 3}
@@ -3012,14 +3009,11 @@ MonoBehaviour:
   - {fileID: 1443659559}
   - {fileID: 1827401173}
   - {fileID: 1410310869}
-  symbolFactory: {fileID: 675800971}
-  playButton: {fileID: 675800970}
   WinTallyBox: {fileID: 747625073}
-  inpos: {fileID: 1769941157}
-  outpos: {fileID: 137245030}
-  tallyText: {fileID: 239303644}
+  InPos: {fileID: 1769941157}
+  OutPos: {fileID: 137245030}
+  TallyText: {fileID: 239303644}
   TallySpeed: 0.01
-  denomref: {fileID: 675800968}
   GoblinAnim: {fileID: 1510963284}
 --- !u!1 &705507993
 GameObject:
@@ -3145,7 +3139,7 @@ RectTransform:
   m_Children:
   - {fileID: 239303643}
   m_Father: {fileID: 907818300}
-  m_RootOrder: 16
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3279,11 +3273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Coins
-  symbolIndex: 2
+  SymbolName: Coins
+  SymbolIndex: 2
   PayValue: 5
-  paytableText: {fileID: 1189495227}
-  symbolWeight: 15
+  PaytableText: {fileID: 1189495227}
+  SymbolWeight: 15
 --- !u!1 &863812439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,17 +3303,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863812439}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.990766, y: 3.990766, z: 3.990766}
   m_Children:
   - {fileID: 1870396685}
   m_Father: {fileID: 907818300}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198, y: 115}
+  m_AnchoredPosition: {x: 197.99994, y: 114.99997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &863812441
@@ -3496,6 +3490,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880448654}
   m_CullTransparentMesh: 1
+--- !u!1 &886703407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 886703408}
+  m_Layer: 5
+  m_Name: UIButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &886703408
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886703407}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1933784072}
+  - {fileID: 454620835}
+  - {fileID: 93650701}
+  m_Father: {fileID: 1995790439}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &888670520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3535,7 +3567,7 @@ RectTransform:
   - {fileID: 186205364}
   - {fileID: 234903155}
   m_Father: {fileID: 907818300}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3672,24 +3704,16 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 68021760}
+  - {fileID: 1796695588}
   - {fileID: 888670521}
   - {fileID: 863812440}
-  - {fileID: 1796695588}
-  - {fileID: 603511457}
-  - {fileID: 1732464402}
-  - {fileID: 1933784072}
   - {fileID: 602640089}
   - {fileID: 1179159399}
-  - {fileID: 244485991}
-  - {fileID: 1090076934}
-  - {fileID: 211073252}
-  - {fileID: 467583329}
-  - {fileID: 452052821}
-  - {fileID: 1593479143}
-  - {fileID: 642106961}
   - {fileID: 747625072}
   - {fileID: 1769941157}
   - {fileID: 137245030}
+  - {fileID: 1995790439}
+  - {fileID: 1605306869}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3883,8 +3907,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5413825, y: 0.5413825, z: 0.5413825}
   m_Children: []
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 10
+  m_Father: {fileID: 1605306869}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3980,11 +4004,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Barrel
-  symbolIndex: 4
+  SymbolName: Barrel
+  SymbolIndex: 4
   PayValue: 15
-  paytableText: {fileID: 2045065772}
-  symbolWeight: 7
+  PaytableText: {fileID: 2045065772}
+  SymbolWeight: 7
 --- !u!1 &1105092236
 GameObject:
   m_ObjectHideFlags: 0
@@ -4195,7 +4219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1179159399}
   m_Layer: 5
-  m_Name: IconPositions
+  m_Name: DropInPositions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4222,7 +4246,7 @@ RectTransform:
   - {fileID: 127469755}
   - {fileID: 2081884796}
   m_Father: {fileID: 907818300}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4489,11 +4513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Crown
-  symbolIndex: 8
+  SymbolName: Crown
+  SymbolIndex: 8
   PayValue: 100
-  paytableText: {fileID: 647694796}
-  symbolWeight: 1
+  PaytableText: {fileID: 647694796}
+  SymbolWeight: 1
 --- !u!1 &1392168634
 GameObject:
   m_ObjectHideFlags: 0
@@ -4878,11 +4902,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Sack
-  symbolIndex: 3
+  SymbolName: Sack
+  SymbolIndex: 3
   PayValue: 10
-  paytableText: {fileID: 126971001}
-  symbolWeight: 9
+  PaytableText: {fileID: 126971001}
+  SymbolWeight: 9
 --- !u!95 &1510963284 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8272943599214529815, guid: 47b41978aba272c47ae5f4a2f7179c61, type: 3}
@@ -4915,12 +4939,53 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5413825, y: 0.5413825, z: 0.5413825}
   m_Children: []
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 14
+  m_Father: {fileID: 1605306869}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -118.3, y: -155}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1605306868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605306869}
+  m_Layer: 5
+  m_Name: SpawnDestroyPositions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1605306869
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605306868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 244485991}
+  - {fileID: 1090076934}
+  - {fileID: 211073252}
+  - {fileID: 467583329}
+  - {fileID: 452052821}
+  - {fileID: 1593479143}
+  m_Father: {fileID: 907818300}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1639915634
@@ -5117,13 +5182,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732464401}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.4959424, y: 1.7513502, z: 1.7984884}
+  m_LocalScale: {x: 2.495942, y: 1.7513502, z: 1.7984884}
   m_Children:
   - {fileID: 1674110510}
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 5
+  m_Father: {fileID: 1995790439}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5314,7 +5379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1769941157}
   m_Layer: 5
-  m_Name: InScreenPos
+  m_Name: TallyInScreenPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5332,7 +5397,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 907818300}
-  m_RootOrder: 17
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5351,7 +5416,7 @@ GameObject:
   - component: {fileID: 1796695590}
   - component: {fileID: 1796695589}
   m_Layer: 5
-  m_Name: WinBox
+  m_Name: BoardBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5369,7 +5434,7 @@ RectTransform:
   m_LocalScale: {x: 4.2825, y: 4.2825, z: 4.2825}
   m_Children: []
   m_Father: {fileID: 907818300}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5818,13 +5883,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933784071}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0287124, y: 2.725375, z: 1.1930419}
   m_Children:
   - {fileID: 452401633}
-  m_Father: {fileID: 907818300}
-  m_RootOrder: 6
+  m_Father: {fileID: 886703408}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5925,6 +5990,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933784071}
   m_CullTransparentMesh: 1
+--- !u!1 &1995790438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995790439}
+  m_Layer: 5
+  m_Name: Console
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1995790439
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995790438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 603511457}
+  - {fileID: 1732464402}
+  - {fileID: 642106961}
+  - {fileID: 886703408}
+  m_Father: {fileID: 907818300}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2010288519
 GameObject:
   m_ObjectHideFlags: 0
@@ -6014,11 +6118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1e2a4daf23f0614e9d15d33abdb695a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Goblin
-  symbolIndex: 7
+  SymbolName: Goblin
+  SymbolIndex: 7
   PayValue: 75
-  paytableText: {fileID: 1769706897}
-  symbolWeight: 2
+  PaytableText: {fileID: 1769706897}
+  SymbolWeight: 2
 --- !u!1 &2045065770
 GameObject:
   m_ObjectHideFlags: 0

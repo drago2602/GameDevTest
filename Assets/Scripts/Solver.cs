@@ -4,35 +4,37 @@ using UnityEngine;
 
 public class Solver : MonoBehaviour
 {
-    public Paytable iconInfo;
-    private int totalWeight;
-
+    public Paytable IconInfo;
+    private int _totalWeight;
     public int[] BoardArray;
+
     // Start is called before the first frame update
     void Start()
     {
+        //instantiates an array with the needed number of values.
         BoardArray = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        foreach (PaytableSymbol i in iconInfo.paytableSymbols)
+
+        //calculates the total weight of all symbols together
+        foreach (PaytableSymbol i in IconInfo.PaytableSymbols)
         {
-            totalWeight = totalWeight + i.symbolWeight;
-            //Debug.Log(totalWeight);
+            _totalWeight = _totalWeight + i.SymbolWeight;
         }
     }
 
     public void BoardSolve()
     {
-        //BoardArray = null;
+        //generates an array of symbols based on weighted random values.
         for (int i = 0; i < 9; i++)
          {
-            var symVal = Random.Range(0, totalWeight+1);
+            var symVal = Random.Range(0, _totalWeight+1);
             var processedWeight = 0;
-            foreach(PaytableSymbol k in iconInfo.paytableSymbols)
+            foreach(PaytableSymbol k in IconInfo.PaytableSymbols)
             {
                 //change to percentages
-                processedWeight += k.symbolWeight;
+                processedWeight += k.SymbolWeight;
                 if (symVal <= processedWeight)
                 {
-                    BoardArray[i] = k.symbolIndex;
+                    BoardArray[i] = k.SymbolIndex;
                     break;
                 }
             }

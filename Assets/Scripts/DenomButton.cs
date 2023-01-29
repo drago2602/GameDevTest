@@ -5,22 +5,22 @@ using TMPro;
 
 public class DenomButton : MonoBehaviour
 {
-    public int denomIndex;
-    public decimal[] denvalues = { 0.25M, 0.50M, 1.00M, 5.00M };
-    public TextMeshProUGUI denomText;
+    public int DenomIndex;
+    public decimal[] DenValues = { 0.25M, 0.50M, 1.00M, 5.00M };
+    public TextMeshProUGUI DenomText;
 
-    //Call this whenever something would change denom
+    //Updates UI whenever something changes denom
     private void updateDenom()
     {
-        denomText.text = "$" + denvalues[denomIndex].ToString();
+        DenomText.text = "$" + DenValues[DenomIndex].ToString();
     }
 
     //increases the denom index then updates the UI
     public void increaseDenom()
     {
-        if (denomIndex < denvalues.Length-1)
+        if (DenomIndex < DenValues.Length-1)
         {
-            denomIndex++;
+            DenomIndex++;
             updateDenom();
         }
     }
@@ -28,15 +28,16 @@ public class DenomButton : MonoBehaviour
     //decreases the denom index then updates the UI
     public void decreaseDenom()
     {
-        if (denomIndex > 0)
+        if (DenomIndex > 0)
         {
-            denomIndex--;
+            DenomIndex--;
             updateDenom();
         }
     }
 
+    //returns the current denom value.
     public decimal GetCurrentDenom()
     {
-        return denvalues[denomIndex];
+        return DenValues[DenomIndex];
     }
 }

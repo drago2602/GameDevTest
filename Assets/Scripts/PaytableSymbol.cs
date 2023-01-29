@@ -5,14 +5,19 @@ using TMPro;
 
 public class PaytableSymbol : MonoBehaviour
 {
-    public string symbolName;
-    public int symbolIndex;
+    public string SymbolName;
+    public int SymbolIndex;
     public int PayValue;
-    public TextMeshProUGUI paytableText;
-    public int symbolWeight;
+    public TextMeshProUGUI PaytableText;
+    public int SymbolWeight;
+
+    //Gets a reference to the child textmeshpro item in case one isn't set
     private void Start()
     {
-        paytableText = GetComponentInChildren<TextMeshProUGUI>();
+        if (PaytableText == null)
+        {
+            PaytableText = GetComponentInChildren<TextMeshProUGUI>();
+        }
     }
 
 }
