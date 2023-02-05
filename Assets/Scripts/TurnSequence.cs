@@ -16,7 +16,7 @@ public class TurnSequence : MonoBehaviour
     public Transform[] SpawnLocations;
     public Transform[] DestroyLocations;
     public Button[] Buttons;
-    public Image[] Winlines;
+    public Image[] WinlineReference;
     public decimal WinTotal;
     public Image WinTallyBox;
 
@@ -27,11 +27,21 @@ public class TurnSequence : MonoBehaviour
     public TextMeshProUGUI TallyText;
     public float TallySpeed;
     public Animator GoblinAnim;
+    public Winline[] winlines;
+
 
     private Paytable _symbolfactory;
     private DenomButton _denomref;
     private PlayButton _playbutton;
+    private decimal _calcwintotal;
 
+    [System.Serializable]
+    public class Winline
+    {
+        public int Pos1;
+        public int Pos2;
+        public int Pos3;
+    }
 
     private void Start()
     {
@@ -39,6 +49,17 @@ public class TurnSequence : MonoBehaviour
         _denomref = gameManager.GetComponent<DenomButton>();
         _playbutton = gameManager.GetComponent<PlayButton>();
     }
+
+
+    public IEnumerator ClearSymbol(Transform j)
+    {
+        yield return new WaitForSeconds(0.5f);
+        j.DOKill();
+        j.gameObject.GetComponent<Image>().DOKill();
+
+        GameObject.Destroy(j.gameObject);
+    }
+
     //Win Sequence Controller
     public IEnumerator BoardFill(int[] symbolArray)
     {
@@ -64,7 +85,8 @@ public class TurnSequence : MonoBehaviour
                     PosCounter = 0;
                 }
                 //Destroy icon
-                GameObject.Destroy(j.gameObject, varTime);
+                StartCoroutine(ClearSymbol(j));
+
             }
         }
 
@@ -95,34 +117,21 @@ public class TurnSequence : MonoBehaviour
         }
 
         //Checks each winline for wins and displays win info to player if present
-        if (symbolArray[0].Equals(symbolArray[1]) && symbolArray[0].Equals(symbolArray[2]))
+        var Wincount = 0;
+        foreach (Winline w in winlines)
         {
-            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[0]].PayValue;
-            StartCoroutine(WinHighlight(0));
+            if (symbolArray[w.Pos1] == symbolArray[w.Pos2] && symbolArray[w.Pos1] == symbolArray[w.Pos3])
+            {
+                Debug.Log("Running");
+                WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[w.Pos1]].PayValue;
+                StartCoroutine(WinHighlight(Wincount));
+            }
+            Wincount++;
         }
-        if (symbolArray[3].Equals(symbolArray[4]) && symbolArray[3].Equals(symbolArray[5]))
-        {
-            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[3]].PayValue;
-            StartCoroutine(WinHighlight(1));
-        }
-        if (symbolArray[6].Equals(symbolArray[7]) && symbolArray[6].Equals(symbolArray[8]))
-        {
-            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[6]].PayValue;
-            StartCoroutine(WinHighlight(2));
-        }
-        if (symbolArray[0].Equals(symbolArray[4]) && symbolArray[0].Equals(symbolArray[8]))
-        {
-            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[0]].PayValue;
-            StartCoroutine(WinHighlight(3));
-        }
-        if (symbolArray[2].Equals(symbolArray[4]) && symbolArray[2].Equals(symbolArray[6]))
-        {
-            WinTotal = WinTotal + _symbolfactory.PaytableSymbols[symbolArray[2]].PayValue;
-            StartCoroutine(WinHighlight(4));
-        }
+
         if (WinTotal == 0)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.7f);
             EnableButtons();
         }
        
@@ -134,12 +143,11 @@ public class TurnSequence : MonoBehaviour
     //WinEffects begin here with some delay between each to avoid overwhelming player
     private IEnumerator WinHighlight(int winlineIndex)
     {
-        Winlines[winlineIndex].DOFade(1, 1);
+        WinlineReference[winlineIndex].DOFade(1, 1);
         yield return new WaitForSeconds(0.1f);
         GoblinAnim.Play("Attack01");
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(WinTally());
-        Debug.Log("finishing");
     }
 
     //Disables UI buttons
@@ -164,7 +172,7 @@ public class TurnSequence : MonoBehaviour
     //Fades out all active winlines
     public void DimAllWinlines()
     {
-        foreach(Image i in Winlines)
+        foreach(Image i in WinlineReference)
         {
             i.DOFade(0, 0.1f);
         }
@@ -181,29 +189,37 @@ public class TurnSequence : MonoBehaviour
 
         //Continuously ticks up the value in the winbox until it meets the required value
         //Speeds up the tally at certain intervals to keep it from taking forever on big wins.
-        while (currTallyVal < (WinTotal*_denomref.GetCurrentDenom()))
+        var TallyAmount = 0.01m;
+        while (currTallyVal < DenomWinTotal())
         {
-            currTallyVal += 0.01m;
-            TallyText.text = currTallyVal + "";
-            if (currTallyVal < 1)
+            currTallyVal += TallyAmount;
+            TallyText.text = "$" + currTallyVal + "";
+            //Started to change tally amount because WaitForSeconds can't go any lower than 0.01 of a second accurately.
+            if (currTallyVal < _denomref.GetCurrentDenom())
             {
-                yield return new WaitForSeconds(TallySpeed*(float)_denomref.GetCurrentDenom());
+                yield return new WaitForSeconds(TallySpeed);
             }
             else if (currTallyVal < 5)
             {
-                yield return new WaitForSeconds(TallySpeed/3);
+                TallyAmount = 0.25m;
+                yield return new WaitForSeconds((TallySpeed));
             }
             else if (currTallyVal < 25)
             {
-                yield return new WaitForSeconds(TallySpeed/5);
+                TallyAmount = 1.00m;
+                yield return new WaitForSeconds((TallySpeed));
             }
         }
+        //Cap the tally at proper final win amount to avoid any hanging decimals
+        currTallyVal = (DenomWinTotal());
+        TallyText.text = "$" + currTallyVal + "";
 
         //Enable buttons once value is reached
-        if (currTallyVal == (WinTotal * _denomref.GetCurrentDenom())){
-            yield return new WaitForSeconds(0.5f);
+        if (currTallyVal == (DenomWinTotal())){
+            yield return new WaitForSeconds(0.7f);
             EnableButtons();
         }
+
     }
 
     //Dismisses tally box and resets tally value.
@@ -212,5 +228,15 @@ public class TurnSequence : MonoBehaviour
         var currTallyVal = 0;
         TallyText.text = currTallyVal.ToString();
         WinTallyBox.transform.DOMoveY(OutPos.position.y, 0.2f);
+
     }
-}
+
+    //Calculate the denom * the Wintotal and store it in _calcwintotal to reduce duplicate code.
+    public decimal DenomWinTotal()
+    {
+        _calcwintotal = (WinTotal * _denomref.GetCurrentDenom());
+        return _calcwintotal;
+    }
+    }
+
+

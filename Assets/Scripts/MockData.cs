@@ -5,6 +5,9 @@ using TMPro;
 
 public class MockData : MonoBehaviour
 {
+    //A testing tool to help test the game. Use it to set your balance to higher values.
+    public float mockBalance;
+
     private decimal _balance;
     public TextMeshProUGUI BalanceText;
 
@@ -14,7 +17,18 @@ public class MockData : MonoBehaviour
     //Sets balance to 10 and updates UI to reflect that as per instructions.
     private void Start()
     {
-        _balance = 10.00M;
+        //check if user has any input on testing tool
+        //Testing tool left in for evaluator convenience
+        if (mockBalance > 0)
+        {
+            _balance = (decimal)mockBalance + 0.00m;
+        }
+        //if no test value is set, ordinary default of 10 as per instructions
+        else
+        {
+            _balance = 10.00m;
+        }
+
         UpdateBalance();
     }
 
@@ -44,12 +58,21 @@ public class MockData : MonoBehaviour
         UpdateBalance();
     }
 
+    //A getter for the balance value
+    public decimal GetBalance()
+    {
+        return _balance;
+    }
+
     //Updates balance and last win in a single function to save repeat function calls
     public void WinUpdateUI(decimal win)
     {
-        _balance = _balance + win;
-        UpdateBalance();
-        LastWin = win;
-        UpdateLastWin();
+        increaseBalance(win);
+        if (win > 0)
+        {
+            LastWin = win;
+            UpdateLastWin();
+        }
+
     }
 }

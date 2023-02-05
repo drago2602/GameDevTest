@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayButton : MonoBehaviour
 {
     //gameManager kept under core components
-    public GameObject gameManager;
+    public GameObject GameManager;
 
     private MockData _mockdata;
     private DenomButton _denom;
@@ -14,9 +14,9 @@ public class PlayButton : MonoBehaviour
 
     private void Start()
     {
-        _mockdata = gameManager.GetComponent<MockData>();
-        _denom = gameManager.GetComponent<DenomButton>();
-        _solver = gameManager.GetComponent<Solver>();
+        _mockdata = GameManager.GetComponent<MockData>();
+        _denom = GameManager.GetComponent<DenomButton>();
+        _solver = GameManager.GetComponent<Solver>();
     }
     //Dismiss win effects from last turn and begins a new win sequence, called from the play button
     public void Play()
@@ -31,7 +31,8 @@ public class PlayButton : MonoBehaviour
     //Called at the very end of the BoardFill Coroutine, this runs immeidately after all symbols and win effects have come on screen in TurnSequence
     public void PostPlay()
     {
-        _mockdata.WinUpdateUI(BoardController.WinTotal);
+        _mockdata.WinUpdateUI(BoardController.DenomWinTotal());
+        _denom.CheckValidDenom();
     }
 
 }
